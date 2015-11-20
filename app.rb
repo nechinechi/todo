@@ -12,18 +12,25 @@ require 'pg'
 
 get '/display' do
   conn = PGconn.connect('localhost', 5432, '', '', 'tonetch', 'tonetch', '')
-  res = conn.exec("SELECT todo, line, expire FROM toDo ORDER BY line")
-  @res = res
+  @conn = conn
   erb :display
 end
 
 
 post '/insert' do
-  if session[:insVal]
-    # conn = PGconn.connect('localhost', 5432, '', '', 'tonetch', 'tonetch', '')
-    # res = conn.exec("SELECT todo, line, expire FROM toDo ORDER BY line")
-    # @res = res
-    # erb :insertExec
+  if params[:chkInsVal]
+    conn = PGconn.connect('localhost', 5432, '', '', 'tonetch', 'tonetch', '')
+
+    if res
+      "hello"
+    else
+      "world"
+    end
+
+    @conn = conn
+    @taskVal = params[:taskVal]
+    @lineVal = params[:lineVal]
+    erb :insertExec
   else
     erb :insValInput
   end

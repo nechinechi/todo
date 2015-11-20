@@ -1,22 +1,47 @@
+<table border="1">
+  <tr align="center"><td>ToDo</td><td>Doing</td><td>Done</td></tr>
+  <tr>
+    <td>
+      <table border="1">
+        <% res = @conn.exec("SELECT task, line FROM taskdata WHERE state=0 ORDER BY line") %>
+        <tr><th>Task</th><th>border line</th><th>statement</th></tr>
+        <% res.each do |e| %>
+          <tr>
+            <td><%= e['task'] %></td>
+            <td><%= e['line'] %></td>
+            <td><%= "ToDo" %></td>
+          </tr>
+        <% end %>
+     </table>
+    </td>
+    <td>
+      <table border="1">
+        <% res = @conn.exec("SELECT task, line FROM taskdata WHERE state=1 ORDER BY line") %>
+        <tr><th>Task</th><th>border line</th><th>statement</th></tr>
+        <% res.each do |e| %>
+          <tr>
+            <td><%= e['task'] %></td>
+            <td><%= e['line'] %></td>
+            <td><%= "Doing" %></td>
+          </tr>
+        <% end %>
+     </table>
+    </td>
+    <td>
+      <table border="1">
+        <% res = @conn.exec("SELECT task FROM taskdata WHERE state=2 ORDER BY line") %>
+        <tr><th>Task</th><th>statement</th></tr>
+        <% res.each do |e| %>
+          <tr>
+            <td><%= e['task'] %></td>
+            <td><%= "Done" %></td>
+          </tr>
+        <% end %>
+     </table>
+    </td>
+  </tr>
+</table>
 
-<html>
-  <head>
-    <meta name="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Task Manager</title>
-  </head>
-
-  <body>
-
-    <table border="1">
-      <tr><th>todo</th><th>line</th><th>expire</th></tr>
-      <% @res.each do |e| %>
-      <tr>
-	<td><%= e['todo'] %></td>
-	<td><%= e['line'] %></td>
-	<td><%= e['expire'] %></td>
-      </tr>
-      <% end %>
-    </table>
-
-  </body>
-</html>
+<form method="post" action="/insert">
+  <input type="submit" value="タスク追加">
+</form>
