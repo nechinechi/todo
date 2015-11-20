@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+# -*- coding: utf-8 -*-
 require 'sinatra'
 require 'pg'
 
@@ -9,7 +11,7 @@ require 'pg'
 # end
 
 get '/display' do
-  conn = PGconn.connect("localhost", 5432, "", "", "tonetch", "tonetch", "")
+  conn = PGconn.connect('localhost', 5432, '', '', 'tonetch', 'tonetch', '')
   res = conn.exec("SELECT todo, line, expire FROM toDo ORDER BY line")
   @res = res
   erb :display
