@@ -1,0 +1,14 @@
+<% res = conn.exec("SELECT ident FROM toDo WHERE todo='params[:taskVal]' AND line='params[:lineVal]'")
+   if res
+ %>
+<%= "There is same Task." %>
+<% else %>
+
+   <% res = @conn.exec("INSERT INTO toDo VALUES(0, 'taskVal', 'lineVal', '--')")
+      if res
+   %>
+	<%= "Inserting is SUCCESS!" %>
+   <% else %>
+     	<%= "FAULT" %>
+   <% end %>
+<% end %>

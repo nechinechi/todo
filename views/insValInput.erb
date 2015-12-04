@@ -2,11 +2,29 @@
 
 <body>
 
-<form method="get" action="/insert">
-  <input type="text" name="taskVal" maxlength="29">
-  <input type="text" name="lineVal" maxlength="8">
-  <input type="hidden" name="chk" value="1">
-  <input type="submit" value="送信">
+<form method="post" action="/insert">
+  <table border=0>
+    <tr>
+      <td>
+	タスク名
+      </td>
+      <td>
+	タスク実行期限
+      </td>
+    </tr>
+    <tr>
+      <td>
+	<input type="text" name="taskVal" maxlength="29">
+      </td>
+      <td>
+	<input type="text" name="lineVal" maxlength="8">
+      </td>
+      <td>
+	<input type="hidden" name="chkInsVal" value="1">
+	<input type="submit" value="送信">
+      </td>
+    </tr>
+  </table>
 </form>
 
 </body>

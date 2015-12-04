@@ -18,6 +18,19 @@ get '/display' do
 end
 
 
+get '/insert' do
+  if session[:insVal]
+    # conn = PGconn.connect('localhost', 5432, '', '', 'tonetch', 'tonetch', '')
+    # res = conn.exec("SELECT todo, line, expire FROM toDo ORDER BY line")
+    # @res = res
+    # erb :insertExec
+  else
+    erb :insValInput
+  end
+end
+
+
+
 # if res
 #   $res = res
 #   # puts "<TABLE BORDER='1'>"
